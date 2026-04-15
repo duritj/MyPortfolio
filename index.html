@@ -8,6 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  
+  <!-- 3D Background Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 
   <style>
     /* ============================================================
@@ -549,9 +553,9 @@
       <div class="exp-item">
         <div class="exp-top">
           <span class="exp-role">AI Automation Service · Founder</span>
-          <span class="exp-date">2025 – Ongoing</span>
+          <span class="exp-date">February 2026 – Ongoing</span>
         </div>
-        <div class="exp-org">New venture · Seoul, South Korea</div>
+        <div class="exp-org">KARIO · Seoul, South Korea</div>
         <ul class="exp-bullets">
           <li>Building AI-powered automation solutions for small businesses and entrepreneurs.</li>
           <li>Designing workflow automations to reduce manual tasks and increase efficiency.</li>
@@ -638,10 +642,7 @@
           <span class="lnk-arr">↗</span>
         </a>
 
-        <a href="https://www.instagram.com/duritj_/" target="_blank" class="lnk" id="lnk-instagram">
-          <div class="lnk-left"><span>📸</span><span>@duritj_</span></div>
-          <span class="lnk-arr">↗</span>
-        </a>
+
 
         <a href="https://www.linkedin.com/in/duriyodtj/" target="_blank" class="lnk" id="lnk-linkedin">
           <div class="lnk-left"><span>💼</span><span>linkedin.com/in/duriyodtj</span></div>
@@ -724,84 +725,21 @@
        AI CANVAS ANIMATION
   ============================================================ -->
   <script>
-    const canvas = document.getElementById('ai-canvas');
-    const ctx    = canvas.getContext('2d');
-    let W, H, nodes = [];
-    const mouse = { x: -9999, y: -9999 };
-
-    const CFG = {
-      count:    65,
-      linkDist: 135,
-      speed:    0.28,
-      color:    '255,255,255',
-      maxAlpha: 0.15,
-      dotAlpha: 0.4,
-      repel:    100,
-    };
-
-    function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
-
-    function mkNode() {
-      return {
-        x: Math.random() * W, y: Math.random() * H,
-        vx: (Math.random() - 0.5) * CFG.speed,
-        vy: (Math.random() - 0.5) * CFG.speed,
-        r:  1.2 + Math.random() * 1,
-        p:  Math.random() * Math.PI * 2,
-        ps: 0.008 + Math.random() * 0.014,
-      };
-    }
-
-    function init() { resize(); nodes = Array.from({ length: CFG.count }, mkNode); }
-
-    function draw() {
-      ctx.clearRect(0, 0, W, H);
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const a = nodes[i], b = nodes[j];
-          const d = Math.hypot(a.x - b.x, a.y - b.y);
-          if (d < CFG.linkDist) {
-            ctx.beginPath();
-            ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(${CFG.color},${CFG.maxAlpha * (1 - d / CFG.linkDist)})`;
-            ctx.lineWidth = 0.55;
-            ctx.stroke();
-          }
-        }
-      }
-      for (const n of nodes) {
-        n.p += n.ps;
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.r + Math.sin(n.p) * 0.6, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${CFG.color},${CFG.dotAlpha + Math.sin(n.p) * 0.08})`;
-        ctx.fill();
-      }
-    }
-
-    function update() {
-      for (const n of nodes) {
-        const mx = n.x - mouse.x, my = n.y - mouse.y;
-        const md = Math.hypot(mx, my);
-        if (md < CFG.repel && md > 0) {
-          const f = (CFG.repel - md) / CFG.repel * 0.35;
-          n.vx += (mx / md) * f; n.vy += (my / md) * f;
-        }
-        const spd = Math.hypot(n.vx, n.vy);
-        if (spd > CFG.speed * 2.5) { n.vx *= CFG.speed * 2.5 / spd; n.vy *= CFG.speed * 2.5 / spd; }
-        n.vx *= 0.99; n.vy *= 0.99;
-        n.x += n.vx; n.y += n.vy;
-        if (n.x < 0 || n.x > W) { n.vx *= -1; n.x = Math.max(0, Math.min(W, n.x)); }
-        if (n.y < 0 || n.y > H) { n.vy *= -1; n.y = Math.max(0, Math.min(H, n.y)); }
-      }
-    }
-
-    function loop() { update(); draw(); requestAnimationFrame(loop); }
-
-    addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-    addEventListener('mouseleave', () => { mouse.x = -9999; mouse.y = -9999; });
-    addEventListener('resize', resize);
-
-    init(); loop();
+    VANTA.NET({
+      el: "html",  /* or document.body */
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0xffffff,
+      backgroundColor: 0x000000,
+      points: 12.00,
+      maxDistance: 22.00,
+      spacing: 16.00
+    })
   </script>
 
 </body>
