@@ -11,7 +11,7 @@
   
   <!-- 3D Background Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.fog.min.js"></script>
 
   <style>
     /* ============================================================
@@ -440,7 +440,7 @@
       <h1 class="home-name">Duriyod TJ</h1>
 
       <!-- EDIT: one-line subtitle -->
-      <p class="home-role">Economics & Finance · Sejong University, Seoul</p>
+      <p class="home-role">Finance &amp; Business</p>
 
       <!-- EDIT: chips — add/remove <span class="chip"> -->
       <div class="chips">
@@ -540,6 +540,15 @@
             <span class="sk-tag">Fast Learner</span>
             <span class="sk-tag">Teamwork</span>
           </div>
+        </div>
+
+        <!-- Marketing & Sales -->
+        <div class="sk-group">
+          <div class="sk-group-title">Marketing & Sales</div>
+          <div class="sk-row"><span class="sk-name">SMM</span><span class="sk-level">Advanced</span></div>
+          <div class="sk-row"><span class="sk-name">Content Strategy</span><span class="sk-level">Intermediate</span></div>
+          <div class="sk-row"><span class="sk-name">Lead Generation</span><span class="sk-level">Intermediate</span></div>
+          <div class="sk-row"><span class="sk-name">Sales Outreach</span><span class="sk-level">Advanced</span></div>
         </div>
 
       </div>
@@ -781,20 +790,20 @@
        AI CANVAS ANIMATION
   ============================================================ -->
   <script>
-    VANTA.NET({
-      el: "html",  /* or document.body */
+    VANTA.FOG({
+      el: "html",
       mouseControls: true,
       touchControls: true,
       gyroControls: false,
       minHeight: 200.00,
       minWidth: 200.00,
-      scale: 1.00,
-      scaleMobile: 1.00,
-      color: 0xffffff,
-      backgroundColor: 0x000000,
-      points: 12.00,
-      maxDistance: 22.00,
-      spacing: 16.00
+      highlightColor: 0x111111,
+      midtoneColor: 0x0,
+      lowlightColor: 0x0,
+      baseColor: 0x0,
+      blurFactor: 0.90,
+      speed: 1.00,
+      zoom: 1.00
     })
   </script>
 
